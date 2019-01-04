@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <aion>
 	<mode>aion</mode>
-	<id>[NODE-ID-PLACEHOLDER]</id>
+	<id>e66d1000-16c8-4ea6-a973-078f246b33b1</id>
 	<api>
 		<!-- rpc config docs: https://github.com/aionnetwork/aion/wiki/JSON-RPC-API-Docs -->
 		<rpc active="true" ip="127.0.0.1" port="8545">
