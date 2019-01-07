@@ -69,7 +69,7 @@ public class TXValidator {
             return false;
         }
 
-        check = tx.getTimeStamp();
+        check = tx.getTimestamp();
         if (check == null || check.length > Long.BYTES) {
             LOG.error("invalid tx timestamp!");
             return false;

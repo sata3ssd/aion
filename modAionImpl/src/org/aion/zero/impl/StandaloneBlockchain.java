@@ -391,7 +391,6 @@ public class StandaloneBlockchain extends AionBlockchainImpl {
         return result;
     }
 
-    // TEMPORARY: here to support the ConsensusTest
     public synchronized Pair<ImportResult, AionBlockSummary> tryToConnectAndFetchSummary(
             AionBlock block) {
         return tryToConnectAndFetchSummary(block, System.currentTimeMillis() / 1000);

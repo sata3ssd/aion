@@ -2502,7 +2502,7 @@ public class ApiAion0 extends ApiAion implements IApiAion {
                                         : tx.getDestinationAddress().toBytes()))
                 .setValue(ByteString.copyFrom(tx.getValue()))
                 .setTxIndex((int) tx.getTxIndexInBlock())
-                .setTimeStamp(ByteUtil.byteArrayToLong(tx.getTimeStamp()))
+                .setTimeStamp(ByteUtil.byteArrayToLong(tx.getTimestamp()))
                 .build();
     }
 
@@ -2632,7 +2632,7 @@ public class ApiAion0 extends ApiAion implements IApiAion {
                         .setNrgPrice(t.getEnergyPrice())
                         .setTxHash(ByteString.copyFrom(t.getTransactionHash()))
                         .setTxIndex(txIndex)
-                        .setTimestamp(ByteUtil.byteArrayToLong(t.getTimeStamp()))
+                        .setTimestamp(ByteUtil.byteArrayToLong(t.getTimestamp()))
                         .setError(error)
                         .addAllLogs(tles);
 
@@ -2789,7 +2789,7 @@ public class ApiAion0 extends ApiAion implements IApiAion {
                 + ","
                 + t.getEnergyPrice()
                 + ","
-                + ByteUtil.byteArrayToLong(t.getTimeStamp())
+                + ByteUtil.byteArrayToLong(t.getTimestamp())
                 + ","
                 + b.getTimestamp()
                 + ","

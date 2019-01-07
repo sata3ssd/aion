@@ -34,6 +34,7 @@ import static org.aion.mcf.core.ImportResult.IMPORTED_NOT_BEST;
 import static org.aion.mcf.core.ImportResult.INVALID_BLOCK;
 import static org.aion.mcf.core.ImportResult.NO_PARENT;
 
+import com.google.common.annotations.VisibleForTesting;
 import java.math.BigInteger;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -551,8 +552,8 @@ public class AionBlockchainImpl implements IAionBlockchain {
         repository.compactState();
     }
 
-    // TEMPORARY: here to support the ConsensusTest
-    public Pair<ImportResult, AionBlockSummary> tryToConnectAndFetchSummary(
+    @VisibleForTesting
+    Pair<ImportResult, AionBlockSummary> tryToConnectAndFetchSummary(
             AionBlock block, long currTimeSeconds) {
         // Check block exists before processing more rules
         if (getBlockStore().getMaxNumber() >= block.getNumber()
