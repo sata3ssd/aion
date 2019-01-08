@@ -24,6 +24,7 @@ package org.aion.api.server.types;
 
 import static org.aion.base.util.TypeConverter.toJsonHex;
 
+import org.aion.base.type.AionAddress;
 import org.aion.base.type.IBlock;
 import org.aion.base.type.IBlockHeader;
 import org.aion.base.util.ByteUtil;
@@ -124,9 +125,19 @@ public final class TxRecpt {
         this.gasPrice = ((AionTxReceipt) receipt).getTransaction().getEnergyPrice();
         this.nrgLimit = ((AionTxReceipt) receipt).getTransaction().getEnergyLimit();
 
-        if (receipt.getTransaction().getContractAddress() != null)
-            this.contractAddress =
-                    toJsonHex(receipt.getTransaction().getContractAddress().toString());
+        if (receipt.getTransaction().getContractAddress() != null) {
+            // quick fix for the Avm Testnet.
+            if (receipt.getTransaction().getTargetVM() == 0x0f) {
+                byte[] bytes = receipt.getTransaction().getContractAddress().toBytes();
+                bytes[0] = 0x0f;
+                Address address = AionAddress.wrap(bytes);
+                this.contractAddress = toJsonHex(address.toString());
+            } else {
+                this.contractAddress =
+                        toJsonHex(receipt.getTransaction().getContractAddress().toString());
+            }
+        }
+
         this.transactionHash = toJsonHex(receipt.getTransaction().getTransactionHash());
         this.transactionIndex = txInfo.getIndex();
         this.root = ByteUtil.toHexString(this.txRoot);
