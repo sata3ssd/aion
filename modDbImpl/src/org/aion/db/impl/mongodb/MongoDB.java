@@ -319,6 +319,36 @@ public class MongoDB extends AbstractDB {
     }
 
     @Override
+    public void putInternal(byte[] key, byte[] value) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
+    public void putToBatchInternal(byte[] key, byte[] value) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
+    public void deleteInBatchInternal(byte[] key) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
+    public void deleteBatchInternal(Collection<byte[]> c) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
+    public void putBatchInternal(Map<byte[], byte[]> m) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
+    public void deleteInternal(byte[] b) {
+        throw new UnsupportedOperationException("This method has no implementation.");
+    }
+
+    @Override
     public void put(byte[] key, byte[] value) {
         check();
         check(key);
